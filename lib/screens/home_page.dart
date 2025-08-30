@@ -1,104 +1,55 @@
 import 'package:flutter/material.dart';
-import 'patient_list.dart';
-import 'inventory_list.dart';
-import 'therapy_list.dart';
-import 'package_list.dart';
+import 'ClinicPage.dart';
+import 'PharmacyPage.dart';
+import 'TemplatePage.dart';
+import 'TherapyPage.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  // 创建TabController来控制页面切换
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this); // 4个选项卡
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose(); // 在页面销毁时释放资源
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Clinic Management System"),
-        centerTitle: true,
-        elevation: 4,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-          ),
-          itemCount: 4,
-          itemBuilder: (context, index) {
-            return Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              elevation: 5,
-              child: InkWell(
-                onTap: () {
-                  switch (index) {
-                    case 0:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PatientListPage(),
-                        ),
-                      );
-                      break;
-                    case 1:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => InventoryListPage(),
-                        ),
-                      );
-                      break;
-                    case 2:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TherapyListPage(),
-                        ),
-                      );
-                      break;
-                    case 3:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PackageListPage(),
-                        ),
-                      );
-                      break;
-                  }
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.local_hospital, size: 50, color: Colors.blue),
-                    SizedBox(height: 10),
-                    Text(
-                      _getModuleTitle(index),
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+        title: Text('首页'),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(text: '门诊'),
+            Tab(text: '药房'),
+            Tab(text: '理疗'),
+            Tab(text: '模板'),
+          ],
         ),
       ),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          ClinicPage(), // 门诊页面
+          PharmacyPage(), // 药房页面
+          TherapyPage(), // 理疗页面
+          TemplatePage(), // 模板页面
+        ],
+      ),
     );
-  }
-
-  String _getModuleTitle(int index) {
-    switch (index) {
-      case 0:
-        return '门诊管理';
-      case 1:
-        return '药房管理';
-      case 2:
-        return '理疗管理';
-      case 3:
-        return '套餐管理';
-      default:
-        return '';
-    }
   }
 }
