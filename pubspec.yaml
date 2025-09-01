@@ -20,5 +20,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/fonts/NotoSansSC-Regular.ttf
+  fonts:
+  - family: YouYuan
+    fonts:
+      - asset: assets/fonts/YouYuan.ttf
