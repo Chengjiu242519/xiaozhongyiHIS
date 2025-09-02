@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../common/mokuai_header.dart';
+import '../common/form_helpers.dart';
 
 class MobanPage extends StatefulWidget {
   const MobanPage({super.key});
@@ -52,7 +53,7 @@ class _MobanPageState extends State<MobanPage> {
                         neirongList[i].biaoti,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
-                      const SizedBox(height: 8),
+                      gap8(),
                       Expanded(
                         child: Text(
                           neirongList[i].neirong,
@@ -60,7 +61,7 @@ class _MobanPageState extends State<MobanPage> {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      gap8(),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: Wrap(
@@ -118,7 +119,7 @@ class _MobanPageState extends State<MobanPage> {
                 decoration: const InputDecoration(labelText: '模板标题'),
                 controller: btCtrl,
               ),
-              const SizedBox(height: 12),
+              gap12(),
               TextField(
                 decoration: const InputDecoration(labelText: '模板内容'),
                 controller: nrCtrl,

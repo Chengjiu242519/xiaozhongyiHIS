@@ -13,6 +13,12 @@ class _MenZhenPageState extends State<MenZhenPage> {
   final TextEditingController rizhiCtrl = TextEditingController();
 
   @override
+  void dispose() {
+    rizhiCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, jiegou) {
@@ -88,7 +94,7 @@ class HuanzheLan extends StatelessWidget {
                 2,
                 (i) => _huanzheTile(context, 'ZhangSan$i', '1380000$i'),
               ),
-              const SizedBox(height: 8),
+              gap8(),
               _lanBiaoti(context, '当天完成接诊'),
               ...List.generate(
                 8,
@@ -127,7 +133,7 @@ class BingliLan extends StatefulWidget {
 
 class _BingliLanState extends State<BingliLan> {
   final _biaodanKey = GlobalKey<FormState>();
-  final caseScrollCtrl = ScrollController(); // 修复 Scrollbar 报错
+  final caseScrollCtrl = ScrollController();
   final chufangList = <ChufangItem>[];
   final yizhuList = <String>[];
 
@@ -284,7 +290,7 @@ class _BingliLanState extends State<BingliLan> {
             ),
           ],
         ),
-        const SizedBox(height: 12),
+        gap12(),
         Row(
           children: [
             Expanded(child: TextFormField(decoration: labelInput('住址'))),
@@ -294,7 +300,7 @@ class _BingliLanState extends State<BingliLan> {
             ),
           ],
         ),
-        const SizedBox(height: 12),
+        gap12(),
         Row(
           children: [
             Expanded(child: TextFormField(decoration: labelInput('过敏史'))),
@@ -302,7 +308,7 @@ class _BingliLanState extends State<BingliLan> {
             Expanded(child: TextFormField(decoration: labelInput('既往史'))),
           ],
         ),
-        const SizedBox(height: 12),
+        gap12(),
         TextFormField(decoration: labelInput('备注'), maxLines: 2),
       ],
     );
@@ -318,7 +324,7 @@ class _BingliLanState extends State<BingliLan> {
             Expanded(child: TextFormField(decoration: labelInput('现病史'))),
           ],
         ),
-        const SizedBox(height: 12),
+        gap12(),
         Row(
           children: [
             Expanded(child: TextFormField(decoration: labelInput('临床诊断'))),
@@ -326,7 +332,7 @@ class _BingliLanState extends State<BingliLan> {
             Expanded(child: TextFormField(decoration: labelInput('中医诊断'))),
           ],
         ),
-        const SizedBox(height: 12),
+        gap12(),
         TextFormField(decoration: labelInput('备注'), maxLines: 2),
       ],
     );
@@ -424,7 +430,7 @@ class _BingliLanState extends State<BingliLan> {
                 controller: biaotiCtrl,
                 decoration: const InputDecoration(labelText: '标题/名称'),
               ),
-              const SizedBox(height: 12),
+              gap12(),
               TextField(
                 controller: neirongCtrl,
                 maxLines: 8,

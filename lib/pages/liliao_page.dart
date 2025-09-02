@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../common/mokuai_header.dart';
+import '../common/form_helpers.dart';
 
 class LiLiaoPage extends StatefulWidget {
   const LiLiaoPage({super.key});
@@ -40,7 +41,7 @@ class _LiLiaoPageState extends State<LiLiaoPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    gap8(),
                     const Text('套餐'),
                     ...List.generate(
                       6,
@@ -121,7 +122,7 @@ class _LiLiaoPageState extends State<LiLiaoPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      gap12(),
                       Expanded(
                         child: Card(
                           child: Column(

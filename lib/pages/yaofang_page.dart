@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../common/mokuai_header.dart';
+import '../common/form_helpers.dart';
 
 class YaofangPage extends StatefulWidget {
   const YaofangPage({super.key});
@@ -118,7 +119,7 @@ class _YaofangPageState extends State<YaofangPage> {
                               setState(() => xiyao = s.first),
                         ),
                       ),
-                    const SizedBox(height: 8),
+                    gap8(),
 
                     // 表单体
                     Expanded(
@@ -132,18 +133,18 @@ class _YaofangPageState extends State<YaofangPage> {
                               controller: _mcCtrl,
                               decoration: _labelInput('名称'),
                             ),
-                            const SizedBox(height: 8),
+                            gap8(),
                             TextFormField(
                               controller: _ggCtrl,
                               decoration: _labelInput('剂型/规格'),
                             ),
-                            const SizedBox(height: 8),
+                            gap8(),
                             TextFormField(
                               controller: _bzCtrl,
                               decoration: _labelInput('备注'),
                               maxLines: 2,
                             ),
-                            const SizedBox(height: 12),
+                            gap12(),
                             Row(
                               children: [
                                 FilledButton(
@@ -199,7 +200,7 @@ class _YaofangPageState extends State<YaofangPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    gap8(),
                     Expanded(
                       child: _yaopinTable(hCtrl: _hCtrl, vCtrl: _vCtrl),
                     ),
